@@ -1,0 +1,44 @@
+<div class="login-page-layout">
+    <div class="container-fluid h-custom my-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample"/>
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 ">
+            <form [formGroup]="loginForm"> 
+                <div class='text-center mr-2'>
+                    <h4 class="mt-1 ">LOGIN</h4>
+                    <p>pleale enter your details</p>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label" htmlFor="form3Example3">Email address</label>
+                    <input type="email" class="form-control" placeholder="Enter a valid email address"
+                     aria-describedby="emailHelp" formControlName="email" />
+                    <p *ngIf="getFormControl('email').touched && getFormControl('email').invalid" class="text-danger">
+                        Please enter a valid email address
+                    </p>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control form-control-md" 
+                    placeholder="Enter password"  formControlName="password"/>
+                    <p *ngIf="getFormControl('password').touched && getFormControl('password').invalid" class="text-danger">
+                        Password cannot be empty
+                    </p>
+                </div>
+                <div class="text-center text-lg-start pt-3">
+                    <div class="d-grid">
+                        <button class="btn btn-primary" (click)="login()">Login</button>
+                    </div>
+                    <p *ngIf="invalidLogin" class="text-danger">
+                        Please enter the correct email and password to login
+                    </p>
+                </div>
+                <div class="text-center mt-4">
+                    <p>Not a member? <a href="/signup">Register</a></p>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

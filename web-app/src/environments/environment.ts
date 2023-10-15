@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  authUrl : "http://localhost:5000/api/auth/login",
   production: false
 };
 
