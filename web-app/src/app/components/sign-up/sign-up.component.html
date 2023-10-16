@@ -1,1 +1,72 @@
-<p>sign-up works!</p>
+<section>
+    <div class="container-fluid h-custom ">
+        <div class='text-center mr-3'>
+            <h2 class="my-3 text-success">WELCOME TO INOTEBOOK</h2>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample" />
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 ">
+                <form [formGroup]="signUpForm">
+                    <div class='text-center'>
+                        <h4 class="mt-3 ">Sign Up</h4>
+                        <p>Please enter your details</p>
+                    </div>
+                    <div class="mb-2">
+                        <label htmlFor="exampleInputName" class="form-label">Name</label>
+                        <input type="text" class="form-control" aria-describedby="nameHelp"
+                            placeholder="Enter your Name" formControlName="name" />
+                        <p *ngIf="getFormControl('name').touched && getFormControl('name').invalid" class="text-danger">
+                            Name cannot be empty
+                        </p>
+                    </div>
+                    <div class="form-outline mb-2">
+                        <label class="form-label" htmlFor="form3Example3">Email address</label>
+                        <input type="email" class="form-control" placeholder="Enter a valid email address"
+                            formControlName="email" />
+                        <p *ngIf="getFormControl('email').touched && getFormControl('email').invalid"
+                            class="text-danger">
+                            Please enter a valid email address
+                        </p>
+                    </div>
+
+                    <div class="form-outline mb-2">
+                        <label class="form-label" htmlFor="form3Example4">Password</label>
+                        <input type="password" class="form-control form-control-md" placeholder="Enter password"
+                            formControlName="password" />
+                        <p *ngIf="getFormControl('password').touched && getFormControl('password').invalid"
+                            class="text-danger">
+                            Password should have at least 5 characters
+                        </p>
+                    </div>
+                    <div class="mb-2">
+                        <label htmlFor="exampleInputPassword1" class="form-label">ConfirmPassword</label>
+                        <input type="password" class="form-control" formControlName="confirmPassword"
+                            placeholder="Confirm password" />
+                        <p *ngIf="getFormControl('confirmPassword').touched && (getFormControl('confirmPassword').invalid || getFormControl('confirmPassword').value != getFormControl('password').value)"
+                            class="text-danger">
+                            Password and confirm password do not match
+                        </p>
+                        <!-- <small style="color: 'red'"></small> -->
+                    </div>
+
+                    <div class="text-center text-lg-start pt-3">
+                        <div class="d-grid">
+                            <button class="btn btn-primary" (click)="signUp()">Register</button>
+                        </div>
+
+                        <p *ngIf="invalidSignUp" class="text-danger">
+                            Some error occurred while creating your account. Please try again later!
+                        </p>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <p>Already a member? <a href="/login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

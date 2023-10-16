@@ -14,6 +14,17 @@ export class AuthService {
   }
 
   validateUser(user:any) {
-    return this.http.post(environment.authUrl, user);
+    const url = environment.AUTH_HOST + environment.LOGIN_ENDPOINT;
+    return this.http.post(url, user);
+  }
+
+  createUser(user:any){
+    const url = environment.AUTH_HOST + environment.SIGN_UP_ENDPOINT;
+    return this.http.post(url, user);
+  }
+
+  getUser(){
+    const url = environment.AUTH_HOST + environment.GET_USER_ENDPOINT;
+    return this.http.get(url); 
   }
 }

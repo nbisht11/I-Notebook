@@ -7,9 +7,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NotesComponent } from './notes/notes.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpInterceptorService } from '../services/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +29,13 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     SignUpComponent,
     HomePageComponent,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    }
   ]
 })
 export class ComponentsModule { }
