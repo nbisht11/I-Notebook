@@ -7,6 +7,9 @@ export const environment = {
   LOGIN_ENDPOINT: "login",
   SIGN_UP_ENDPOINT: "createUser",
   GET_USER_ENDPOINT: "getuser",
+
+  NOTE_HOST: "http://localhost:5000/api/notes/",
+  CREATE_NOTE_ENDPOINT: "createnote",
   production: false
 };
 

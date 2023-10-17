@@ -1,1 +1,30 @@
-<p>add-note works!</p>
+<div>
+    <h2>Add a Note</h2>
+    <form class="my-3" [formGroup]="notesForm">
+        <div class="mb-3">
+            <label for="titleInput" class="form-label">Title</label>
+            <input type="text" class="form-control" id="titleInput" formControlName= "title" />
+            <p *ngIf="getFormControl('title').touched && getFormControl('title').invalid" class="text-danger">
+                Title should be of min 3 char long
+            </p>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDescription" class="form-label">Description</label>
+            <input type="text" class="form-control" formControlName = "description" id="inputDescription"/>
+            <p *ngIf="getFormControl('description').touched && getFormControl('description').invalid" class="text-danger">
+                Description Should be of min 5 char long
+            </p>
+        </div>
+        <div class="mb-3">
+            <label htmlFor="exampleInputTag" className="form-label">Tag</label>
+            <input type="text" class="form-control" formControlName = "tag" id="exampleInputDescription" onChange={handleOnChange} />
+            <p *ngIf="getFormControl('tag').touched && getFormControl('tag').invalid" class="text-danger">
+                Tag must be at least 3 character long
+            </p>
+        </div>
+        <button [disabled]="notesForm.invalid" class="btn btn-primary" (click)="addNote()">Submit</button>
+        <p *ngIf="noteCreationFailed" class="text-danger">
+            Something went wrong, please try again.
+        </p>
+    </form>
+</div>
