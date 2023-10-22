@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { NotesComponent } from './notes/notes.component';
+import { NoteComponent } from './notes/note.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -16,7 +16,7 @@ import { HttpInterceptorService } from '../services/http-interceptor.service';
     LoginComponent,
     SignUpComponent,
     HomePageComponent,
-    NotesComponent,
+    NoteComponent,
     AddNoteComponent
   ],
   imports: [

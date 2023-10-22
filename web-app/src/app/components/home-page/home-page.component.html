@@ -1,3 +1,10 @@
 <div class="container my-3">
     <app-add-note></app-add-note>
+    <div className="row my-3">
+        <h2>Your Notes</h2>
+        <div *ngFor="let note of notes">
+            <app-note [note]="note" (action)="handleNoteEvents($event)">
+            </app-note>
+        </div>
+    </div>
 </div>

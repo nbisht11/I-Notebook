@@ -13,4 +13,9 @@ export class NoteService {
     const url = environment.NOTE_HOST+environment.CREATE_NOTE_ENDPOINT;
     return this.http.post(url,note);
   }
+
+  getAllNotes() {
+    const url = environment.NOTE_HOST+environment.GET_ALL_NOTES_ENDPOINT;
+    return this.http.get(url);
+  }
 }

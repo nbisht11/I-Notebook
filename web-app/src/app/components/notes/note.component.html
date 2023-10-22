@@ -1,0 +1,75 @@
+<div>
+    <div class="modal fade" id="editNote_{{note._id}}" tabIndex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Note</h5>
+                    <button #closeEditModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="my-3" [formGroup]="noteEditForm">
+                        <div class="mb-3">
+                            <label for="titleInput" class="form-label">Title</label>
+                            <input type="text" class="form-control" formControlName= "title" />
+                            <p *ngIf="getFormControl('title').touched && getFormControl('title').invalid" class="text-danger">
+                                Title should be of min 3 char long
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Description</label>
+                            <input type="text" class="form-control" formControlName = "description"/>
+                            <p *ngIf="getFormControl('description').touched && getFormControl('description').invalid" class="text-danger">
+                                Description Should be of min 5 char long
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tag</label>
+                            <input type="text" class="form-control" formControlName = "tag" />
+                            <p *ngIf="getFormControl('tag').touched && getFormControl('tag').invalid" class="text-danger">
+                                Tag must be at least 3 character long
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button [disabled]="noteEditForm.invalid" class="btn btn-primary" (click)="updateNote()">Update Note</button>
+                    <!-- <p *ngIf="noteCreationFailed" class="text-danger">
+                        Something went wrong, please try again.
+                    </p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal " id="deleteNote_{{note._id}}" tabIndex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure delete this note?</h5>
+                </div>
+                <div class="modal-body">
+                    This note will be permanentely removed and you wont be able to see them again.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" #closeDeleteModal data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)="deleteNote()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3"> 
+        <div class="card my-3"> 
+            <div class ="card-body">
+                <div class='d-flex align-items-center'>
+                    <h5 class ="card-title">{{note.title}}</h5>
+                    <i class="far fa-edit mx-2"  data-bs-toggle="modal"  [attr.data-bs-target]="'#editNote_' + note._id"></i>
+                    <i class="far fa-trash-alt mx-2" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteNote_' + note._id"></i>
+                </div>
+                <p class ="card-text">{{note.description}}</p> 
+            </div>
+        </div>
+    </div>
+
+</div>
